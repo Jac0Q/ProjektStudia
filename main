@@ -1,0 +1,129 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package application;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author jacekkielar
+ */
+public class main {
+    
+    public static ArrayList<String> calculate ( ArrayList<String> userValues ) {
+    
+    ArrayList<String> calculations = new ArrayList<String>();
+    long squadMeters = 0;
+    long tempCost = 0;
+    long summaryCost = 0;
+    
+    for (int i = 0; i < userValues.size(); i++) {
+        
+        String value = userValues.get(i);
+        
+        switch (i) {
+            case 0: 
+                squadMeters = Long.valueOf(value).longValue();
+                tempCost = squadMeters * 100;
+                summaryCost = summaryCost + tempCost;
+                calculations.add("Koszt rozmiaru:");
+                calculations.add(Long.toString(tempCost));
+                break;
+            case 1:
+                if (value == "plastik") {
+                    tempCost = 0;
+                } else if (value == "aluminium") {
+                    tempCost = squadMeters * 30;
+                } else if (value == "drewno") {
+                    tempCost = squadMeters * 20;
+                }
+                
+                if (tempCost > 0) {
+                    calculations.add("Koszt materiału:");
+                    calculations.add(Long.toString(tempCost));
+                    summaryCost = summaryCost + tempCost;
+                }
+                break;
+            case 2:
+                calculations.add("Kolor:");
+                calculations.add(value);
+                break;
+            case 3:
+                calculations.add("Rodzaj wybranej szyby:");
+                if (value == "Tak") {
+                    tempCost = squadMeters * 30;
+                    calculations.add("Szyba specjalna");
+                    calculations.add("Koszt: " + Long.toString(tempCost));
+                    summaryCost = summaryCost + tempCost;
+                } else {
+                    calculations.add("Szyba zwykła");
+                }
+                break;
+            case 4:
+                calculations.add("Rodzaj otwierania okna:");
+                if (value == "Tak") {
+                    tempCost = squadMeters * 10;
+                    calculations.add("Skrzydłowo");
+                    calculations.add("Koszt: " + Long.toString(tempCost));
+                    summaryCost = summaryCost + tempCost;
+                } else {
+                    calculations.add("Standardowo");
+                }
+                break;
+            case 5:
+                calculations.add("Rodzaj rolety zewnętrznej:");
+                if (value == "Tak") {
+                    tempCost = squadMeters * 80;
+                    calculations.add("Roleta zewnętrzna automatyczna");
+                    calculations.add("Koszt: " + Long.toString(tempCost));
+                    summaryCost = summaryCost + tempCost;
+                } else {
+                    tempCost = squadMeters * 40;
+                    calculations.add("Roleta zewnętrzna ręczna");
+                    calculations.add("Koszt: " + Long.toString(tempCost));
+                    summaryCost = summaryCost + tempCost;
+                }
+                break;
+            case 6:
+                calculations.add("Sposób płatności: " + value);
+                break;
+            case 7:
+                calculations.add("Waluta: " + value);
+                break;
+            case 8:
+                calculations.add("Rodzaj dokumentu: " + value);
+                break;
+        }
+        
+    }
+    
+    calculations.add("Całkowity koszt: " + Long.toString(summaryCost));
+    
+    return calculations;
+    
+    
+    
+    
+}
+    
+    public static void main(String[] args) throws IOException {
+        
+    /**
+     * @param args the command line arguments
+     */
+
+    /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new window().setVisible(true);
+            }
+        });
+        
+        System.out.println("test");
+    
+        }
+    }
+
